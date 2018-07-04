@@ -41,16 +41,15 @@ public class ProductDao extends BaseDao<ProductItem, BigInteger> {
                 if (!listProductInDB.stream().anyMatch(e -> e.getName().contains(product1.getName()))) {
                     //System.out.println("Product: " + product1.getName() + " NOT EXIST IN DB  ");                   
                     //setParentProduct(product1.getImageList(), product1);                   
-                        product1.getImageList().stream().forEach(image -> {
-                            image.setProduct(product1);
-                            System.out.println(image.getUrl());
-                        });                                       
-                    session.save(product1);                  
-                }
-                else{
+                    product1.getImageList().stream().forEach(image -> {
+                        image.setProduct(product1);
+                        System.out.println(image.getUrl());
+                    });
+                    session.save(product1);
+                } else {
                     //System.out.println("Product: " + product1.getName() + " EXIST IN DB  ");
                 }
-            });            
+            });
             session.getTransaction().commit();
         } catch (Exception e) {
             Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, e);
@@ -58,12 +57,11 @@ public class ProductDao extends BaseDao<ProductItem, BigInteger> {
         }
     }
 
-    private void setParentProduct(List<ProductImage> images, ProductItem product) {
-        if (images != null && !images.isEmpty()) {
-            for (ProductImage img : images) {
-                img.setProduct(product);
-            }
-        }
+    public List<ProductItem> getAllProduct(Integer offset, Integer maxResults) {
+        return getListWithPaging(offset, maxResults);
     }
 
+    public Long productCount() {
+        return count();
+    }
 }

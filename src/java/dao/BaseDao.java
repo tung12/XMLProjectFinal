@@ -19,6 +19,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import utils.Connections;
 
@@ -49,11 +50,48 @@ public class BaseDao<T, PK extends Serializable> implements IDao {
 
     public List<T> getList() {
         try {
-            session =session.getSessionFactory().openSession();
+            session = session.getSessionFactory().openSession();
             session.getTransaction().begin();
-            List<T> result= (List<T>)session.createQuery("from " + entityClass.getName())
-                .list();           
-            session.getTransaction().commit();           
+            List<T> result = (List<T>) session.createQuery("from " + entityClass.getName())
+                    .list();
+            session.getTransaction().commit();
+            return result;
+        } catch (Exception e) {
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, e);
+            session.getTransaction().rollback();
+        }
+
+        return null;
+    }
+
+    public List<T> getListWithPaging(Integer offset, Integer maxResults) {
+        try {
+            session = session.getSessionFactory().openSession();
+            session.getTransaction().begin();
+            List<T> result = (List<T>) session
+                    .createCriteria(entityClass)
+                    .setFirstResult(offset != null ? offset : 0)
+                    .setMaxResults(maxResults != null ? maxResults : 10)
+                    .list();
+            session.getTransaction().commit();
+            return result;
+        } catch (Exception e) {
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, e);
+            session.getTransaction().rollback();
+        }
+
+        return null;
+    }
+
+    public Long count() {
+        try {
+            session = session.getSessionFactory().openSession();
+            session.getTransaction().begin();
+            Long result= (Long)session
+                .createCriteria(entityClass)
+                .setProjection(Projections.rowCount())
+                .uniqueResult();   
+            session.getTransaction().commit();
             return result;
         } catch (Exception e) {
             Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, e);
@@ -74,10 +112,10 @@ public class BaseDao<T, PK extends Serializable> implements IDao {
     }
 
     public PK insert(T entity) {
- try {
-            session =session.getSessionFactory().openSession();
+        try {
+            session = session.getSessionFactory().openSession();
             session.getTransaction().begin();
-            PK id = (PK) session.save(entity);            
+            PK id = (PK) session.save(entity);
             session.getTransaction().commit();
             //session.close();
             return (PK) id;
@@ -112,7 +150,7 @@ public class BaseDao<T, PK extends Serializable> implements IDao {
     @Override
     public void saveCrawlerToDB(List list) {
         try {
-            session =session.getSessionFactory().openSession();
+            session = session.getSessionFactory().openSession();
             session.getTransaction().begin();
             for (int i = 0; i < list.size(); i++) {
                 session.save(list.get(i));
@@ -148,5 +186,5 @@ public class BaseDao<T, PK extends Serializable> implements IDao {
 
         return false;
     }
-    
+
 }

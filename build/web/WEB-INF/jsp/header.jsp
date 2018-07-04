@@ -1,39 +1,33 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css" href="css/header.css">
-<script>
-
-// Get the modal
-    var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
-</script>
+<script src="script/header.js" type="text/javascript"></script>
 <div style="background: #E0E0E0; height: 55px; padding: 5px;">
     <div style="float: left">
-        <h1>My </h1>
+        <h1>My Website</h1>
+    </div>   
+    <div id="userInfo" style="float: right; padding: 10px; text-align: right;" >
+        <c:choose>
+            <c:when test="${not empty loginedUser}">
+                Hello <b>${loginedUser.userName}</b>
+                <br/>           
+                <button onclick="logOut()" style="width:auto;">Logout</button>     
+            </c:when>  
+            <c:otherwise>
+                <button onclick="openModal()" style="width:auto;">Login</button>
+            </c:otherwise>
+        </c:choose>
+
     </div>
 
-    <div style="float: right; padding: 10px; text-align: right;">
-
-        <!-- User store in session with attribute: loginedUser -->
-        Hello <b>${loginedUser.userName}</b>
-        <br/>
-        Search <input name="search">
-        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-    </div>
     <!-- Button to open the modal login form -->
-    
-    
-    
-        <!-- The Modal -->
+    Search <input name="search">
+
+
+    <!-- The Modal -->
     <div id="id01" class="modal">
-        <span onclick="document.getElementById('id01').style.display = 'none'"
+        <span onclick="closeModal()"
               class="close" title="Close Modal">&times;</span>
 
         <!-- Modal Content -->
@@ -48,9 +42,9 @@
 
                 <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="password" required>
-                
+
                 <input type="hidden" name="from" value="${requestScope['javax.servlet.forward.servlet_path']}">
-                
+
                 <button type="submit">Login</button>
                 <label>
                     <input type="checkbox" checked="checked" name="remember"> Remember me
@@ -58,7 +52,7 @@
             </div>
 
             <div class="container" style="background-color:#f1f1f1">
-                <button type="button" class="cancelbtn">Cancel</button>
+                <button type="button" class="cancelbtn" onclick="closeModal()">Cancel</button>
                 <span class="psw">Forgot <a href="#">password?</a></span>
             </div>
         </form> 
