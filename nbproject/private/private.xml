@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/xml/categoryXmlSchema.xsd</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/xml/productXmlSchema.xsd</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/jaxb/category/ListCategory.java</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/interfaces/ICategory.java</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/dao/ProductDao.java</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/jaxb/category/CategoryItem.java</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/interfaces/ICrawler.java</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/utils/Utils.java</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/interfaces/IDao.java</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/xml/hibernate.cfg.xml</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/dao/CategoryDao.java</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/dao/BaseDao.java</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/crawler/LimeorangeCrawler.java</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/jaxb/product/ObjectFactory.java</file>
+        </group>
+    </open-files>
+</project-private>

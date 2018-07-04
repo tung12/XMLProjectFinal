@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<xsd:schema version="1.0"
+           xmlns= "http://xml.netbeans.org/schema/category"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://xml.netbeans.org/schema/category"
+           elementFormDefault="qualified">
+    <xsd:element name="categorys"  type="listCategory"/>
+    <xsd:complexType name="listCategory">
+        <xsd:sequence>
+            <xsd:element name="category" type="categoryItem" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="categoryItem">               
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string" />           
+            <xsd:element name="domain" type="xsd:string" />
+            <xsd:element name="lastModifiedDate" type="xsd:string" />
+            <xsd:element name="lastModifiedBy" type="xsd:string" />
+            <xsd:element name="createdDate" type="xsd:string" />
+            <xsd:element name="createdBy" type="xsd:string" />
+            <xsd:element name="isDeleted" type="xsd:boolean" />
+        </xsd:sequence>
+        <xsd:attribute  name="id" type="xsd:positiveInteger"/>       
+    </xsd:complexType>    
+</xsd:schema>

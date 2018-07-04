@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<xsd:schema version="1.0"
+           xmlns= "http://xml.netbeans.org/schema/products"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://xml.netbeans.org/schema/products"
+           elementFormDefault="qualified">
+    <xsd:element name="products"  type="listProduct"/>
+    <xsd:complexType name="listProduct">
+        <xsd:sequence>
+            <xsd:element name="product" type="productItem" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="productItem">               
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string" />
+            <xsd:element name="image" type="xsd:string" />
+            <xsd:element name="price" type="xsd:positiveInteger" />
+            <xsd:element name="discription" type="xsd:string" />
+            <xsd:element name="domain" type="xsd:string" />
+            <xsd:element name="urlDetail" type="xsd:string" />
+            <xsd:element name="lastModifiedDate" type="xsd:string"  nillable="true"/>
+            <xsd:element name="lastModifiedBy" type="xsd:string" nillable="true"/>
+            <xsd:element name="createdDate" type="xsd:string" nillable="true"/>
+            <xsd:element name="createdBy" type="xsd:string" nillable="true"/>
+            <xsd:element name="isDeleted" type="xsd:boolean" nillable="true"/>
+        </xsd:sequence>
+        <xsd:attribute  name="id" type="xsd:positiveInteger"/>
+        <xsd:attribute  name="idCategory" type="xsd:string" use="required"/>
+    </xsd:complexType> 
+       
+</xsd:schema>

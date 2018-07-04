@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<products>
+    <tmp>tmp</tmp>
+    <product id="1">
+        <name>BỘ DƯỠNG DA YEHWADAM REVITALIZING SPECIAL SET (2EA)</name>
+        <domain>https://thefaceshop.com.vn</domain>
+        <image>//product.hstatic.net/1000036599/product/_gwp_yehwadam-revitalizing-special_large.jpg</image>
+        <price>10</price>
+        <discription>/products/bo-duong-da-yehwadam-revitalizing-special-set-2ea</discription>
+    </product>
+    <product id="1">
+        <name>Bộ Dưỡng Làm Sáng Da (SET) RICE &amp; CERAMIDE SPECIAL SET</name>
+        <domain>https://thefaceshop.com.vn</domain>
+        <image>//product.hstatic.net/1000036599/product/1_fddab97c077b4b27ab0e5812cbcd05cb_large.jpg</image>
+        <price>10</price>
+        <discription>/products/set-rice-ceramide-special-set</discription>
+    </product>
+    <product id="1">
+        <name>Bộ Dưỡng Săn Mịn Da Chống Lão Hóa YEHWADAM HWANSAENGGO SPECIAL GIFT SET</name>
+        <domain>https://thefaceshop.com.vn</domain>
+        <image>//product.hstatic.net/1000036599/product/_set_-yehwadam-hwansaenggo-special-gift-set_large.jpg</image>
+        <price>10</price>
+        <discription>/products/bo-duong-san-min-da-chong-lao-hoa-yehwadam-hwansaenggo-special-gift-set</discription>
+    </product>
+    <product id="1">
+        <name>Bộ Tinh Chất Dưỡng Sáng Mịn Da YEHWADAM REVITALIZING SERUM SPECIA GIFT SET</name>
+        <domain>https://thefaceshop.com.vn</domain>
+        <image>//product.hstatic.net/1000036599/product/_set_-yehwadam-revitalizing-serum-specia-gift-set_39de6584e3914f95983b84af78921cfd_large.jpg</image>
+        <price>10</price>
+        <discription>/products/bo-tinh-chat-duong-sang-min-da-set-yehwadam-revitalizing-serum-specia-gift-set</discription>
+    </product>
+    <product id="1">
+        <name>Nước Cân Bằng Cung Cấp Ẩm THEFACESHOP CHIA SEED HYDRATING TONER</name>
+        <domain>https://thefaceshop.com.vn</domain>
+        <image>//hstatic.net/599/1000036599/1/2016/5-25/thefaceshop_chia_seed_hydrating_toner_47fd2bd5-341c-4e0c-4c06-55a92c024344_large.jpg</image>
+        <price>10</price>
+        <discription>/products/nuoc-can-bang-cung-cap-am-thefaceshop-chia-seed-hydrating-toner</discription>
+    </product>
+    <product id="1">
+        <name>Nước Cân Bằng Cung Cấp Ẩm, Kiểm Soát Nhờn THEFACESHOP CHIA SEED NO SHINE HYDRATING WATER</name>
+        <domain>https://thefaceshop.com.vn</domain>
+        <image>//product.hstatic.net/1000036599/product/af003731_01_1_large.jpg</image>
+        <price>10</price>
+        <discription>/products/nuoc-can-bang-cung-cap-am-kiem-soat-nhon-thefaceshop-chia-seed-no-shine-hydrating-water</discription>
+    </product>
+    <product id="1">
+        <name>Nước Cân Bằng Da ARSAINTE ECO-THERAPY TONIC WITH ESSENTIAL 145ML</name>
+        <domain>https://thefaceshop.com.vn</domain>
+        <image>//product.hstatic.net/1000036599/product/arsainte-eco-therapy-tonic-with-essential.2017_large.jpg</image>
+        <price>10</price>
+        <discription>/products/nuoc-can-bang-da-arsainte-eco-therapy-tonic-with-essential-145ml</discription>
+    </product>
+    <product id="1">
+        <name>Nước Cân Bằng Da ARSAINTE ECO-THERAPY TONIC WITH ESSENTIAL 225ML</name>
+        <domain>https://thefaceshop.com.vn</domain>
+        <image>//product.hstatic.net/1000036599/product/arsainte-eco-therapy-tonic-with-essential.2017.225ml_large.jpg</image>
+        <price>10</price>
+        <discription>/products/nuoc-can-bang-da-arsainte-eco-therapy-tonic-with-essential-225ml</discription>
+    </product>
+    <product id="1">
+        <name>Nước Cân Bằng DR.BELMEUR CLARIFYING TONER</name>
+        <domain>https://thefaceshop.com.vn</domain>
+        <image>//product.hstatic.net/1000036599/product/belmeur-clarifying-toner_large.jpg</image>
+        <price>10</price>
+        <discription>/products/nuoc-can-bang-dr-belmeur-clarifying-toner</discription>
+    </product>
+    <product id="1">
+        <name>Nước Cân Bằng DR.BELMEUR DAILY REPAIR MINERAL SALT TONER 300Ml</name>
+        <domain>https://thefaceshop.com.vn</domain>
+        <image>//product.hstatic.net/1000036599/product/13285_shop2_574932_large.jpg</image>
+        <price>10</price>
+        <discription>/products/nuoc-can-bang-dr-belmeur-daily-repair-mineral-salt-toner-300ml</discription>
+    </product>
+    <product id="1">
+        <name>Nước Cân Bằng Giúp Da Săn Mịn POMEGRANATE AND COLLAGEN VOLUME LIFTING TONER</name>
+        <domain>https://thefaceshop.com.vn</domain>
+        <image>//hstatic.net/599/1000036599/1/2016/7-5/pomegranate-and-collagen-volume-lifting-toner_large.jpg</image>
+        <price>10</price>
+        <discription>/products/nuoc-can-bang-giup-da-san-min-pomegranate-and-collagen-volume-lifting-toner</discription>
+    </product>
+    <product id="1">
+        <name>Nước Cân Bằng Giúp Da Trắng Sáng WHITE SEED BRIGHTENING TONER</name>
+        <domain>https://thefaceshop.com.vn</domain>
+        <image>//hstatic.net/599/1000036599/1/2016/7-7/white-seed-brightening-toner_large.jpg</image>
+        <price>10</price>
+        <discription>/products/white-seed-brightening-toner</discription>
+    </product>
+    <product id="1">
+        <name>Nước Cân Bằng Làm Dịu Da CALENDULA ESSENTIAL MOISTURE TONER</name>
+        <domain>https://thefaceshop.com.vn</domain>
+        <image>//product.hstatic.net/1000036599/product/the-faceshop-calendula-essential-moisture-toner-bao-bi-moi-500x500_large.jpg</image>
+        <price>10</price>
+        <discription>/products/nuoc-can-bang-lam-diu-da-calendula-essential-moisture-toner</discription>
+    </product>
+    <product id="1">
+        <name>Nước Cân Bằng Làm Sáng Da RICE&amp;CERAMIDE MOISTURE TONER</name>
+        <domain>https://thefaceshop.com.vn</domain>
+        <image>//product.hstatic.net/1000036599/product/file_42_38_large.jpg</image>
+        <price>10</price>
+        <discription>/products/nuoc-can-bang-lam-sang-da-rice-ceramide-moisture-toner</discription>
+    </product>
+    <product id="1">
+        <name>Nước Cân Bằng Ngăn Ngừa Mụn CLEAN FACE MILD TONER</name>
+        <domain>https://thefaceshop.com.vn</domain>
+        <image>//hstatic.net/599/1000036599/1/2016/5-25/clean_face_mild_toner_b7968875-0a45-4554-7d18-bb5d42b4bca7_large.jpg</image>
+        <price>10</price>
+        <discription>/products/nuoc-can-bang-ngan-ngua-mun-clean-face-mild-toner</discription>
+    </product>
+    <product id="1">
+        <name>Nước Cân Bằng Săn Mịn Da YEHWADAM HWANSAENGGO TONER</name>
+        <domain>https://thefaceshop.com.vn</domain>
+        <image>//product.hstatic.net/1000036599/product/yehwadam-hwansaenggo-toner_large.jpg</image>
+        <price>10</price>
+        <discription>/products/nuoc-can-bang-san-min-lo-chan-long-yehwadam-hwansaenggo-toner</discription>
+    </product>
+    <product id="1">
+        <name>Nước Cân Bằng Sáng Mịn Da YEHWADAM HEAVEN GRADE GINSENG REGENERATING TONER</name>
+        <domain>https://thefaceshop.com.vn</domain>
+        <image>//product.hstatic.net/1000036599/product/yehwadam_20heaven_20grade_20ginseng_20regenerating_20toner_large.jpg</image>
+        <price>10</price>
+        <discription>/products/nuoc-can-bang-sang-min-da-yehwadam-heaven-grade-ginseng-regenerating-toner</discription>
+    </product>
+    <product id="1">
+        <name>Nước Cân Bằng Sáng Mịn Da YEHWADAM REVITALIZING TONER</name>
+        <domain>https://thefaceshop.com.vn</domain>
+        <image>//product.hstatic.net/1000036599/product/yehwadam-revitalizing-toner_large.jpg</image>
+        <price>10</price>
+        <discription>/products/yehwadam-revitalizing-toner</discription>
+    </product>
+    <product id="1">
+        <name>Nước Cân Bằng Sáng Trắng Da YEHWADAM PURE BRIGHTENING TONER</name>
+        <domain>https://thefaceshop.com.vn</domain>
+        <image>//product.hstatic.net/1000036599/product/theface_699_light-500x500_large.jpg</image>
+        <price>10</price>
+        <discription>/products/yehwadam-pure-brightening-toner</discription>
+    </product>
+    <product id="1">
+        <name>Nước Cân Bằng Và Sữa Dưỡng 2 Trong 1 YEHWADAM REVITALIZING MOISTURIZING FLUID</name>
+        <domain>https://thefaceshop.com.vn</domain>
+        <image>//product.hstatic.net/1000036599/product/1496897270_l1_large.jpg</image>
+        <price>10</price>
+        <discription>/products/sua-duong-va-nuoc-can-bang-2-trong-1-yehwadam-revitalizing-moisturizing-fluid</discription>
+    </product>
+</products>

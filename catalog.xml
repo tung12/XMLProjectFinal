@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/C:/Users/ntien/Desktop/XMLProjectFinal/web/WEB-INF/xml/productXmlSchema.xsd" uri="src/conf/xml-resources/jaxb/Tung/productXmlSchema.xsd"/>
+</catalog>
