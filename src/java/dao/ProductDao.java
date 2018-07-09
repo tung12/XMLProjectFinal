@@ -15,6 +15,7 @@ import jaxb.product.ProductItem;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import utils.Connections;
+import utils.PaginationHandler;
 
 /**
  *
@@ -57,11 +58,16 @@ public class ProductDao extends BaseDao<ProductItem, BigInteger> {
         }
     }
 
-    public List<ProductItem> getAllProduct(Integer offset, Integer maxResults) {
-        return getListWithPaging(offset, maxResults);
+    public PaginationHandler<ProductItem> getAllProduct(Integer page, Integer maxResult, Integer maxNavigationResult) {
+        String sql = "From " + ProductItem.class.getName();
+        return getPaginationResult(sql, page, maxResult, maxNavigationResult);
     }
 
     public Long productCount() {
         return count();
+    }
+
+    public ProductItem getProductById(BigInteger id) {
+        return getByID(id);
     }
 }

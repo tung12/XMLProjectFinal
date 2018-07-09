@@ -8,6 +8,8 @@ package dao;
 import java.math.BigInteger;
 import java.util.List;
 import jaxb.category.CategoryItem;
+import jaxb.product.ProductItem;
+import utils.PaginationHandler;
 
 
 /**
@@ -34,5 +36,16 @@ public class CategoryDao extends BaseDao<CategoryItem, BigInteger> {
         
        return getList();
                
+    }
+    
+    public List<CategoryItem> getAllCategory(){
+        return getList();
+    }
+    public PaginationHandler<CategoryItem> getAllCategory(Integer page, Integer maxResult, Integer maxNavigationResult) {
+        String sql = "From " + CategoryItem.class.getName();
+        return getPaginationResult(sql, page, maxResult, maxNavigationResult);
+    }
+    public CategoryItem getCategoryById(BigInteger id) {
+        return getByID(id);
     }
 }

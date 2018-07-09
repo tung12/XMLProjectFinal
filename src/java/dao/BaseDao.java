@@ -22,6 +22,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import utils.Connections;
+import utils.PaginationHandler;
 
 /**
  *
@@ -44,8 +45,18 @@ public class BaseDao<T, PK extends Serializable> implements IDao {
     }
 
     public T getByID(PK id) {
-        // TODO Select by ID
-        return (T) getCurrentSession().get(entityClass, id);
+        try {
+            session = session.getSessionFactory().openSession();
+            session.getTransaction().begin();
+            T user = (T)session.get(entityClass, id );
+            session.getTransaction().commit();
+            return user;
+        } catch (HibernateException e) {
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, e);
+            session.getTransaction().rollback();
+        }
+
+        return null;
     }
 
     public List<T> getList() {
@@ -64,15 +75,13 @@ public class BaseDao<T, PK extends Serializable> implements IDao {
         return null;
     }
 
-    public List<T> getListWithPaging(Integer offset, Integer maxResults) {
+    public PaginationHandler<T> getPaginationResult(String sql, Integer page, Integer maxResult, Integer maxNavigationResult) {
         try {
             session = session.getSessionFactory().openSession();
             session.getTransaction().begin();
-            List<T> result = (List<T>) session
-                    .createCriteria(entityClass)
-                    .setFirstResult(offset != null ? offset : 0)
-                    .setMaxResults(maxResults != null ? maxResults : 10)
-                    .list();
+            Query query = session.createQuery(sql);
+            PaginationHandler<T> result
+                    = new PaginationHandler<T>(query, page, maxResult, maxNavigationResult);
             session.getTransaction().commit();
             return result;
         } catch (Exception e) {
@@ -87,10 +96,10 @@ public class BaseDao<T, PK extends Serializable> implements IDao {
         try {
             session = session.getSessionFactory().openSession();
             session.getTransaction().begin();
-            Long result= (Long)session
-                .createCriteria(entityClass)
-                .setProjection(Projections.rowCount())
-                .uniqueResult();   
+            Long result = (Long) session
+                    .createCriteria(entityClass)
+                    .setProjection(Projections.rowCount())
+                    .uniqueResult();
             session.getTransaction().commit();
             return result;
         } catch (Exception e) {

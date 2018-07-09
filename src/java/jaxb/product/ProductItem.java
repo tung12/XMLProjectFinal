@@ -1,6 +1,7 @@
 
 package jaxb.product;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +67,7 @@ import javax.xml.bind.annotation.XmlTransient;
     "isDeleted"
     
 })
-public class ProductItem {
+public class ProductItem implements Serializable {
 
     @XmlElement(required = true)
     @Column(name = "name")

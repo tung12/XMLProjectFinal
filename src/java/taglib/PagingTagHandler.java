@@ -20,7 +20,7 @@ public class PagingTagHandler extends SimpleTagSupport {
     private String uri;
     private int offset;
     private int count;
-    private int max = 10;
+    private int max ;
     private int steps = 10;
     private String previous = "Previous";
     private String next = "Next";
@@ -78,7 +78,7 @@ public class PagingTagHandler extends SimpleTagSupport {
             link.append("\"");
         }
         if (disabled) {
-            link.append(">").append("<a href=\"#\">" + text + "</a></li>");
+            link.append(">").append("<a disabled=\"true\" href=\"#\">" + text + "</a></li>");
         } else {
             link.append(">").append("<a href=\"" + uri + "?offset=" + page + "\">" + text + "</a></li>");
         }

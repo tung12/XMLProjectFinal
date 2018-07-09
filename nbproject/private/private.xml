@@ -3,20 +3,33 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/xml/categoryXmlSchema.xsd</file>
-            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/xml/productXmlSchema.xsd</file>
             <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/jaxb/category/ListCategory.java</file>
-            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/interfaces/ICategory.java</file>
-            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/dao/ProductDao.java</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/servlets/admin/CategoryServlet.java</file>
             <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/jaxb/category/CategoryItem.java</file>
-            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/interfaces/ICrawler.java</file>
-            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/utils/Utils.java</file>
-            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/interfaces/IDao.java</file>
-            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/xml/hibernate.cfg.xml</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/dao/ProductDao.java</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/jaxb/category/ObjectFactory.java</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/web/WEB-INF/admin/product.jsp</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/web/WEB-INF/schema/productXmlSchema.xsd</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/servlets/user/MainServlet.java</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/web/WEB-INF/admin/menuAdmin.jsp</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/servlets/admin/ProductServlet.java</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/web/WEB-INF/admin/home.jsp</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/jaxb/category/package-info.java</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/web/WEB-INF/admin/category.jsp</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/servlets/admin/DetailProductServlet.java</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/jaxb/product/package-info.java</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/web/script/admin.js</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/web/css/admin.css</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/web/WEB-INF/schema/roleXmlSchema.xsd</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/web/WEB-INF/schema/userXmlSchema.xsd</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/web/stylesheet/categoryAdmin.xsl</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/web/stylesheet/productAdmin.xsl</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/servlets/admin/NewsServlet.java</file>
             <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/dao/CategoryDao.java</file>
-            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/dao/BaseDao.java</file>
-            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/crawler/LimeorangeCrawler.java</file>
-            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/jaxb/product/ObjectFactory.java</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/web/WEB-INF/schema/categoryXmlSchema.xsd</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/web/WEB-INF/schema/newsXmlSchema.xsd</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/ntien/Desktop/XMLProjectFinal/src/java/utils/BaseMashaller.java</file>
         </group>
     </open-files>
 </project-private>
