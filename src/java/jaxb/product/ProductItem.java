@@ -1,4 +1,3 @@
-
 package jaxb.product;
 
 import java.io.Serializable;
@@ -12,11 +11,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.MappedSuperclass;
+
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -24,11 +23,21 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.XmlTransient;
+import jaxb.news.NewsItem;
+//import org.hibernate.search.annotations.Analyze;
+//import org.hibernate.search.annotations.Field;
+//import org.hibernate.search.annotations.Index;
+//import org.hibernate.search.annotations.Indexed;
+//import org.hibernate.search.annotations.Store;
+
 /**
- * <p>Java class for productItem complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
+ * Java class for productItem complex type.
+ *
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
+ *
  * <pre>
  * &lt;complexType name="productItem">
  *   &lt;complexContent>
@@ -46,11 +55,12 @@ import javax.xml.bind.annotation.XmlTransient;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @Entity
 @Table(name = "Product")
+//@Indexed
 //  uniqueConstraints = { @UniqueConstraint(columnNames = { "DEPT_NO" }) })
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "productItem", propOrder = {
@@ -65,12 +75,13 @@ import javax.xml.bind.annotation.XmlTransient;
     "createdDate",
     "createdBy",
     "isDeleted"
-    
+
 })
 public class ProductItem implements Serializable {
 
     @XmlElement(required = true)
     @Column(name = "name")
+//    @Field(index= Index.YES, analyze= Analyze.YES, store= Store.NO)
     protected String name;
     @XmlElement(required = true)
     @Column(name = "image")
@@ -91,38 +102,50 @@ public class ProductItem implements Serializable {
     @XmlAttribute(name = "id")
     @XmlSchemaType(name = "positiveInteger")
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     protected BigInteger id;
     @Column(name = "idCategory")
     @XmlAttribute(name = "idCategory", required = true)
     protected String idCategory;
     @Column(name = "lastModifiedDate")
-    @XmlElement(name="lastModifiedDate",required = false,nillable = true)
+    @XmlElement(name = "lastModifiedDate", required = false, nillable = true)
     protected String lastModifiedDate;
     @Column(name = "lastModifiedBy")
-    @XmlElement(name="lastModifiedBy",required = false,nillable = true)
+    @XmlElement(name = "lastModifiedBy", required = false, nillable = true)
     protected String lastModifiedBy;
     @Column(name = "createdDate")
-    @XmlElement(name="createdDate",required = false,nillable = true)
+    @XmlElement(name = "createdDate", required = false, nillable = true)
     protected String createdDate;
     @Column(name = "createdBy")
-    @XmlElement(name="createdBy",required = false,nillable = true)
+    @XmlElement(name = "createdBy", required = false, nillable = true)
     protected String createdBy;
     @Column(name = "isDeleted")
-    @XmlElement(name="isDeleted",required = false,nillable = true)
+    @XmlElement(name = "isDeleted", required = false, nillable = true)
     protected boolean isDeleted;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.EAGER)
     @XmlTransient
-     public List<ProductImage> imageList;
+    public List<ProductImage> imageList;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @PrimaryKeyJoinColumn
+    @XmlTransient
+    public NewsItem news;
+
+    public NewsItem getNews() {
+        return news;
+    }
+
+    public void setNews(NewsItem news) {
+        this.news = news;
+    }
+
+    
     /**
      * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getName() {
         return name;
@@ -133,11 +156,9 @@ public class ProductItem implements Serializable {
 
     /**
      * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is {@link String }
+     *
      */
     public void setName(String value) {
         this.name = value;
@@ -145,11 +166,9 @@ public class ProductItem implements Serializable {
 
     /**
      * Gets the value of the image property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getImage() {
         return image;
@@ -157,11 +176,9 @@ public class ProductItem implements Serializable {
 
     /**
      * Sets the value of the image property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is {@link String }
+     *
      */
     public void setImage(String value) {
         this.image = value;
@@ -169,11 +186,9 @@ public class ProductItem implements Serializable {
 
     /**
      * Gets the value of the price property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
+     *
+     * @return possible object is {@link BigInteger }
+     *
      */
     public BigInteger getPrice() {
         return price;
@@ -181,11 +196,9 @@ public class ProductItem implements Serializable {
 
     /**
      * Sets the value of the price property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
+     *
+     * @param value allowed object is {@link BigInteger }
+     *
      */
     public void setPrice(BigInteger value) {
         this.price = value;
@@ -193,11 +206,9 @@ public class ProductItem implements Serializable {
 
     /**
      * Gets the value of the discription property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getDiscription() {
         return discription;
@@ -205,11 +216,9 @@ public class ProductItem implements Serializable {
 
     /**
      * Sets the value of the discription property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is {@link String }
+     *
      */
     public void setDiscription(String value) {
         this.discription = value;
@@ -217,11 +226,9 @@ public class ProductItem implements Serializable {
 
     /**
      * Gets the value of the domain property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getDomain() {
         return domain;
@@ -229,11 +236,9 @@ public class ProductItem implements Serializable {
 
     /**
      * Sets the value of the domain property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is {@link String }
+     *
      */
     public void setDomain(String value) {
         this.domain = value;
@@ -241,11 +246,9 @@ public class ProductItem implements Serializable {
 
     /**
      * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
+     *
+     * @return possible object is {@link BigInteger }
+     *
      */
     public BigInteger getId() {
         return id;
@@ -253,11 +256,9 @@ public class ProductItem implements Serializable {
 
     /**
      * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
+     *
+     * @param value allowed object is {@link BigInteger }
+     *
      */
     public void setId(BigInteger value) {
         this.id = value;
@@ -265,11 +266,9 @@ public class ProductItem implements Serializable {
 
     /**
      * Gets the value of the idCategory property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getIdCategory() {
         return idCategory;
@@ -277,11 +276,9 @@ public class ProductItem implements Serializable {
 
     /**
      * Sets the value of the idCategory property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is {@link String }
+     *
      */
     public void setIdCategory(String value) {
         this.idCategory = value;
@@ -350,6 +347,5 @@ public class ProductItem implements Serializable {
     public String toString() {
         return "ProductItem{" + "name=" + name + ", image=" + image + ", price=" + price + ", discription=" + discription + ", domain=" + domain + ", urlDetail=" + urlDetail + ", id=" + id + ", idCategory=" + idCategory + ", lastModifiedDate=" + lastModifiedDate + ", lastModifiedBy=" + lastModifiedBy + ", createdDate=" + createdDate + ", createdBy=" + createdBy + ", isDeleted=" + isDeleted + ", imageList=" + imageList + '}';
     }
-    
-    
+
 }

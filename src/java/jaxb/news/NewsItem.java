@@ -3,18 +3,29 @@ package jaxb.news;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import jaxb.newsimage.NewsImage;
+import jaxb.product.ProductImage;
+import jaxb.product.ProductItem;
 
 
 /**
@@ -55,7 +66,6 @@ import javax.xml.bind.annotation.XmlType;
     "rateStar",
     "discription",
     "view",
-    "image",
     "lastModifiedDate",
     "lastModifiedBy",
     "createdDate",
@@ -76,8 +86,6 @@ public class NewsItem implements Serializable {
     protected String discription;
     @XmlElement(required = true)
     protected BigInteger view;
-    @XmlElement(required = true)
-    protected String image;
     @XmlElement(required = true, nillable = true)
     protected String lastModifiedDate;
     @XmlElement(required = true, nillable = true)
@@ -95,8 +103,48 @@ public class NewsItem implements Serializable {
     @Column(name = "id")
     protected BigInteger id;
     @XmlAttribute(name = "idProduct", required = true)
-    protected String idProduct;
+    protected BigInteger idProduct;
+    @XmlAttribute(name = "idUser", required = true)
+    protected String idUser;
+    @XmlAttribute(name = "idCategory", required = true)
+    protected String idCategory;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "news", fetch = FetchType.EAGER)
+    @XmlTransient
+     public List<NewsImage> imageList;
 
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "news")  
+    @JoinColumn(name="idProduct", nullable = true, insertable = false, updatable = false)
+    @XmlTransient
+    private ProductItem product;
+
+    public ProductItem getProduct() {
+        return product;
+    }
+
+    public void setProduct(ProductItem product) {
+        this.product = product;
+    }
+    
+    public String getIdCategory() {
+        return idCategory;
+    }
+
+    public void setIdCategory(String idCategory) {
+        this.idCategory = idCategory;
+    }
+
+    public List<NewsImage> getImageList() {
+        if (imageList == null) {
+            imageList = new ArrayList<NewsImage>();
+        }
+        return imageList;
+    }
+
+    public void setImageList(List<NewsImage> imageList) {
+        this.imageList = imageList;
+    }
+    
     /**
      * Gets the value of the name property.
      * 
@@ -216,30 +264,7 @@ public class NewsItem implements Serializable {
     public void setView(BigInteger value) {
         this.view = value;
     }
-
-    /**
-     * Gets the value of the image property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getImage() {
-        return image;
-    }
-
-    /**
-     * Sets the value of the image property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setImage(String value) {
-        this.image = value;
-    }
+  
 
     /**
      * Gets the value of the lastModifiedDate property.
@@ -393,7 +418,7 @@ public class NewsItem implements Serializable {
      *     {@link String }
      *     
      */
-    public String getIdProduct() {
+    public BigInteger getIdProduct() {
         return idProduct;
     }
 
@@ -405,8 +430,18 @@ public class NewsItem implements Serializable {
      *     {@link String }
      *     
      */
-    public void setIdProduct(String value) {
+    public void setIdProduct(BigInteger value) {
         this.idProduct = value;
     }
 
+    public String getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
+    }
+    
+
+    
 }

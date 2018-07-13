@@ -11,8 +11,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
     
     <xsl:param name="categoryPath" />
-    <xsl:variable name="categorys" select="document($categoryPath)" />
-   
+    <xsl:variable name="categorys" select="document($categoryPath)" />  
     <xsl:template match = "/">
         <table border = "1" width = "100%">
             <tr>                               
@@ -30,9 +29,10 @@
                     </td>
                     <td>
                         <xsl:variable name="cateID" select="@idCategory"/>
-<!--                        <xsl:value-of select = "$categorys/categorys/category/name"/>-->
+                        
+                        <xsl:value-of select = "$categorys//product/name"/>
 <!--                        <xsl:value-of select = "$categoryss//category/name"/>-->
-<!--                   <xsl:value-of select = "$categorys//category[@id=$cateID]/name"/>-->
+<!--                   <xsl:value-of select = "$categorys//category[1]/name"/>-->
                     </td>
                     <td>
                         <xsl:value-of select = "price"/>

@@ -49,8 +49,8 @@ public class MainServlet extends HttpServlet {
             throws ServletException, IOException {
 //                Utils utils = new Utils();
 ////            //đường dẫn tương đối khi deploy = netbean
-//            utils.XJCGenerateJavaObj("C:\\Users\\ntien\\Desktop\\XMLProjectFinal\\web\\WEB-INF\\schema\\newsXmlSchema.xsd",
-//                    "C:\\Users\\ntien\\Desktop\\XMLProjectFinal\\src\\java","jaxb.news");
+//            utils.XJCGenerateJavaObj("C:\\Users\\ntien\\Desktop\\XMLProjectFinal\\web\\WEB-INF\\schema\\newsImageXmlSchema.xsd",
+//                    "C:\\Users\\ntien\\Desktop\\XMLProjectFinal\\src\\java","jaxb.newsimage");
        
 
     }

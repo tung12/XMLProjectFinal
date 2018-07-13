@@ -62,7 +62,7 @@ function numPages()
 function getCount() {
     console.log(xmlDom.getElementsByTagName("product").length);
 }
-function loadCategoryData(id) {
+function loadCategoryData(id, callback) {
     if (window.ActiveXObject)
     {
         xhttp = new ActiveXObject("Msxml2.XMLHTTP");
@@ -72,14 +72,32 @@ function loadCategoryData(id) {
     }
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            loadProductData(id, xhttp.responseXML);
+            callback(id, xhttp.responseXML);
         }
     };
-    xhttp.open("POST", "category", true);
+    xhttp.open("GET", "detailCategory", true);
     xhttp.send();
 
 }
-function loadProductData(id, xmlCategory) {
+function loadProductData(id, callback) {
+    if (window.ActiveXObject)
+    {
+        xhttp = new ActiveXObject("Msxml2.XMLHTTP");
+    } else
+    {
+        xhttp = new XMLHttpRequest();
+    }
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            callback(id, xhttp.responseXML);
+        }
+    };
+    xhttp.open("GET", "detailProduct?id=" + id, true);
+    xhttp.send();
+
+}
+function detailProduct(id, xmlCategory) {
+    clearOption("caterogySelect");
     if (id != null || typeof id != 'undefined') {
         if (window.ActiveXObject)
         {
@@ -95,7 +113,6 @@ function loadProductData(id, xmlCategory) {
         } // Helping IE11
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                clearOption("caterogySelect");
                 xmlProductDetail = xhttp.responseXML;
                 //set category 
                 textNode = xmlCategory.getElementsByTagName('name');
@@ -115,10 +132,20 @@ function loadProductData(id, xmlCategory) {
 
 
     } else {
+        textNode = xmlCategory.getElementsByTagName('name');
+        valueNode = xmlCategory.getElementsByTagName("category");
+        for (i = 0; i < valueNode.length; i++) {
+            value = valueNode[i].getAttributeNode("id").nodeValue;
+            text = textNode[i].childNodes[0].nodeValue;
+            addOption("caterogySelect", text, value);
+        }
         setValueText("productName", "");
         setValueText("productPrice", "");
     }
 
+
+}
+function detailNews() {
 
 }
 function loadXMLDoc(filename)
@@ -208,12 +235,8 @@ var btn = document.getElementById("myBtn");
 
 // When the user clicks the button, open the modal 
 function openModalProduct(id) {
-
-    loadCategoryData(id);
+    loadCategoryData(id, detailProduct);
     document.getElementById("formProduct").style.display = "block";
-    console.log(test);
-
-
 }
 function openModalCategory(id) {
 
@@ -232,19 +255,80 @@ function openModalCategory(id) {
                 document.getElementById("formCategory").style.display = "block";
             }
         };
-        xhttp.open("POST", "category?id=" + id, true);
+        xhttp.open("GET", "detailCategory?id=" + id, true);
+
         xhttp.send("");
     } else {
         setValueText("categoryName", "");
         document.getElementById("formCategory").style.display = "block";
     }
-    
+
 
 
 }
+function setCategoryForNews(id, xmlCategory) {
+    clearOption("caterogySelect");
+    textNode = xmlCategory.getElementsByTagName('name');
+    valueNode = xmlCategory.getElementsByTagName("category");
+    for (i = 0; i < valueNode.length; i++) {
+        value = valueNode[i].getAttributeNode("id").nodeValue;
+        text = textNode[i].childNodes[0].nodeValue;
+        addOption("caterogySelect", text, value);
+    }
+}
+function setProductForNews(id, xmlCategory) {
+    clearOption("caterogySelect");
+    textNode = xmlCategory.getElementsByTagName('name');
+    valueNode = xmlCategory.getElementsByTagName("category");
+    for (i = 0; i < valueNode.length; i++) {
+        value = valueNode[i].getAttributeNode("id").nodeValue;
+        text = textNode[i].childNodes[0].nodeValue;
+        addOption("caterogySelect", text, value);
+    }
+}
+function openModalNews(id) {
+    loadCategoryData(id, setCategoryForNews);
+    document.getElementById("formNews").style.display = "block";
+}
+
+function selectFormDB() {
+    var checked = document.querySelector('#selectDB').checked;
+
+    if (checked) {
+        document.getElementById("divSearch").style.display = "block";
+    } else {
+        document.getElementById("divSearch").style.display = "none";
+    }
+}
+function searchFunc() {
+    document.getElementById("listSearch").innerHTML = "";
+    var name = document.getElementById("searchProduct").value;
+    if (window.ActiveXObject)
+    {
+        xhttp = new ActiveXObject("Msxml2.XMLHTTP");
+    } else
+    {
+        xhttp = new XMLHttpRequest();
+    }
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            xmlProduct = xhttp.responseXML;
+            textNode = xmlProduct.getElementsByTagName('name');
+            valueNode = xmlProduct.getElementsByTagName("product");
+            for (i = 0; i < valueNode.length; i++) {
+                value = valueNode[i].getAttributeNode("id").nodeValue;
+                text = textNode[i].childNodes[0].nodeValue;
+                addLi("listSearch",text,value);
+            }
+        }
+    };
+    xhttp.open("GET", "productDetail?name=" + name, true);
+
+    xhttp.send("");
+}
 // When the user clicks on <span> (x), close the modal
 document.getElementsByClassName("close")[0].onclick = function () {
-    
+
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -254,6 +338,9 @@ window.onclick = function (event) {
     }
     if (event.target == document.getElementById("formCategory")) {
         document.getElementById("formCategory").style.display = "none";
+    }
+    if (event.target == document.getElementById("formNews")) {
+        document.getElementById("formNews").style.display = "none";
     }
 }
 
@@ -267,6 +354,25 @@ function addOption(id, text, value) {
     option.value = value;
     select.add(option);
 }
+function addLi(id, text,idProduct) {
+    var ul = document.getElementById(id);
+    var li = document.createElement("li");
+    li.onclick = function(){ setProductForNews(idProduct,text); };
+    ul.appendChild(li);
+
+    t = document.createTextNode(text);
+
+    li.innerHTML = li.innerHTML + text;
+}
+function setProductForNews(id,text){
+    var p =  document.getElementById("selectedText");
+    var idProduct = document.getElementById("idProduct");
+    p.innerHTML="";
+    console.log("id: "+id+" text: "+text);
+    idProduct.value = id;
+    console.log(idProduct.value);
+   p.innerHTML=text;
+}
 function setValueOption(id, value) {
     var select = document.getElementById(id);
     select.value = value;
@@ -276,3 +382,30 @@ function setValueText(id, value) {
     inputText.value = value;
 }
 
+function submitNews(){
+    var name = document.getElementById("newsName").value;
+    var category = document.getElementById("categorySelect").value;
+    var title = document.getElementById("newsTitle").value;
+    var discription = document.getElementById("newsDiscription").value;
+    var idProduct = document.getElementById("idProduct").value;
+    console.log(idProduct);
+    var images = document.getElementById("newsImage").value;
+    var dataString = 'name=' + name + '&category=' + category + '&title=' +title +
+            '&discription=' + discription+'&images=' + images+'&idProduct=' + idProduct;
+    if (window.ActiveXObject)
+    {
+        xhttp = new ActiveXObject("Msxml2.XMLHTTP");
+    } else
+    {
+        xhttp = new XMLHttpRequest();
+    }
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            
+            }
+        
+    };
+    xhttp.open("POST", "detailNews", true);
+
+    xhttp.send(dataString);
+}

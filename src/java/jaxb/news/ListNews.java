@@ -68,4 +68,8 @@ public class ListNews {
         return this._new;
     }
 
+    public void setNew(List<NewsItem> _new) {
+        this._new = _new;
+    }
+
 }

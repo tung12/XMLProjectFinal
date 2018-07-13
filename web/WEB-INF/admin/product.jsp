@@ -14,15 +14,19 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Product</title>
     </head>
-    <script> test = <%=request.getAttribute("totalPages")%>;</script>
+    <script> test = ${xmlCategory};
+        console.log(test);
+    </script>
     <body >       
         <jsp:include page="../jsp/header.jsp"></jsp:include>
         <jsp:include page="menuAdmin.jsp"></jsp:include>
         <x:parse var="xmlProduct" doc="${productXml}" scope="session" />
-        <x:parse var="xmlCategory" doc="${categoryXml}"  />
+        <x:parse var="xmlCategory" doc="${categoryXml}" scope="session" />
         <c:import var="xslProduct" url="../../stylesheet/productAdmin.xsl" />
-        <button id="myBtn" onclick="openModal()">modal</button>
+        <button id="myBtn" onclick="openModalProduct()">modal</button>
+        ${xmlProduct}
         ${xmlCategory}
+        <x:out select = "$xmlCategory/categorys/category[1]/name" />
         <div id="example" >
             <x:transform xml="${xmlProduct}" xslt="${xslProduct}" >
                 <x:param name="categoryPath" value="${xmlCategory}"/>

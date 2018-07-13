@@ -6,10 +6,10 @@ and open the template in the editor.
 -->
 
 <xsd:schema version="1.0"
-           xmlns= "http://xml.netbeans.org/schema/news"
-           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://xml.netbeans.org/schema/news"
-           elementFormDefault="qualified">
+            xmlns= "http://xml.netbeans.org/schema/news"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://xml.netbeans.org/schema/news"
+            elementFormDefault="qualified">
     <xsd:element name="news"  type="listNews"/>
     <xsd:complexType name="listNews">
         <xsd:sequence>
@@ -23,7 +23,6 @@ and open the template in the editor.
             <xsd:element name="rateStar" type="xsd:integer" />
             <xsd:element name="discription" type="xsd:string" />
             <xsd:element name="view" type="xsd:integer" />
-            <xsd:element name="image" type="xsd:string" />
             <xsd:element name="lastModifiedDate" type="xsd:string"  nillable="true"/>
             <xsd:element name="lastModifiedBy" type="xsd:string" nillable="true"/>
             <xsd:element name="createdDate" type="xsd:string" nillable="true"/>
@@ -31,7 +30,9 @@ and open the template in the editor.
             <xsd:element name="isDeleted" type="xsd:boolean" nillable="true"/>
         </xsd:sequence>
         <xsd:attribute  name="id" type="xsd:positiveInteger"/>
-        <xsd:attribute  name="idProduct" type="xsd:string" use="required"/>
+        <xsd:attribute  name="idProduct" type="xsd:positiveInteger" use="required"/>
+        <xsd:attribute  name="idUser" type="xsd:string" use="required"/>
+        <xsd:attribute  name="idCategory" type="xsd:string" use="required"/>
     </xsd:complexType> 
        
 </xsd:schema>

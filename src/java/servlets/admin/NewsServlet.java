@@ -94,10 +94,10 @@ public class NewsServlet extends HttpServlet {
         }
         request.setAttribute("newsXml", stringWriterNews.toString());
         System.out.println(stringWriterNews.toString());
-//        RequestDispatcher dispatcher
-//                = this.getServletContext().getRequestDispatcher("/WEB-INF/admin/category.jsp");
-//
-//        dispatcher.forward(request, response);
+        RequestDispatcher dispatcher
+                = this.getServletContext().getRequestDispatcher("/WEB-INF/admin/news.jsp");
+
+        dispatcher.forward(request, response);
     }
 
     /**

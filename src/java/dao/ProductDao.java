@@ -12,8 +12,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import jaxb.product.ProductImage;
 import jaxb.product.ProductItem;
+import org.hibernate.SQLQuery;
+//import org.apache.lucene.search.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
+//import org.hibernate.search.FullTextSession;
+//import org.hibernate.search.Search;
+//import org.hibernate.search.jpa.FullTextEntityManager;
+//import org.hibernate.search.query.dsl.QueryBuilder;
 import utils.Connections;
 import utils.PaginationHandler;
 
@@ -63,11 +71,28 @@ public class ProductDao extends BaseDao<ProductItem, BigInteger> {
         return getPaginationResult(sql, page, maxResult, maxNavigationResult);
     }
 
-    public Long productCount() {
-        return count();
+    public List<ProductItem> getAllProduct() {
+        return getList();
+    }
+
+    public List<ProductItem> searchByName(String keyWords) throws Exception {
+        session = session.getSessionFactory().openSession();
+        session.getTransaction().begin();
+        String sql="select * from product where name LIKE '%"+keyWords+"%'";
+        SQLQuery query = session.createSQLQuery(sql).addEntity(entityClass);  
+        query.setMaxResults(10);
+        return (List<ProductItem>)query.list();
     }
 
     public ProductItem getProductById(BigInteger id) {
         return getByID(id);
+    }
+    
+    public List<ProductImage> getImageProduct(BigInteger id){
+        session = session.getSessionFactory().openSession();
+        session.getTransaction().begin();
+        List<ProductImage> result = session.createCriteria(ProductImage.class)
+                .add(Restrictions.eq("productId", id)).list();
+        return result;
     }
 }

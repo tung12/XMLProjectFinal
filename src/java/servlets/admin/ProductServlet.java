@@ -104,7 +104,6 @@ public class ProductServlet extends HttpServlet {
         }
         request.setAttribute("productXml", stringWriterProduct.toString());
         request.setAttribute("categoryXml", stringWriterCategory.toString());
-        System.out.println(stringWriterCategory.toString());
         RequestDispatcher dispatcher
                 = this.getServletContext().getRequestDispatcher("/WEB-INF/admin/product.jsp");
 

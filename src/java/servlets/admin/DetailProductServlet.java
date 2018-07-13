@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.math.BigInteger;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -21,6 +22,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import jaxb.product.ListProduct;
+import jaxb.product.ProductImage;
 import jaxb.product.ProductItem;
 
 /**
@@ -70,23 +72,32 @@ public class DetailProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        BigInteger id = null ;
-        if (request.getParameter("id") != null ) {
-            id = BigInteger.valueOf(Long.parseLong(request.getParameter("id")));
-            ListProduct listProduct = new ListProduct();
-         listProduct.getProduct().add( productDao.getProductById(id));        
-        JAXBContext jaxbContext;        
+        String id = request.getParameter("id");
+        String name = request.getParameter("name");
+        ListProduct listProduct = new ListProduct();
+        if (id != null) {
+            listProduct.getProduct().add(productDao.getProductById(BigInteger.valueOf(Long.parseLong(id))));
+        } else {
+            if (name != null) {
+                try {
+                    listProduct.getProduct().addAll(productDao.searchByName(name));
+                } catch (Exception ex) {
+                    Logger.getLogger(DetailProductServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+        
+        JAXBContext jaxbContext;
         try {
             jaxbContext = JAXBContext.newInstance(ListProduct.class);
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-            jaxbMarshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");           
+            jaxbMarshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
             jaxbMarshaller.marshal(listProduct, response.getOutputStream());
         } catch (JAXBException ex) {
             Logger.getLogger(ProductServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        }        
-        
-        
+
     }
 
     /**

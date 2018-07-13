@@ -21,6 +21,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+//import org.hibernate.search.FullTextSession;
+//import org.hibernate.search.Search;
 import utils.Connections;
 import utils.PaginationHandler;
 
@@ -109,6 +111,16 @@ public class BaseDao<T, PK extends Serializable> implements IDao {
 
         return null;
     }
+
+//    public void indexData() throws Exception {
+//	try {
+//		Session session = getCurrentSession();
+//		FullTextSession fullTextSession = Search.getFullTextSession(session);
+//		fullTextSession.createIndexer().startAndWait();
+//	} catch(Exception e) {
+//		throw e;
+//	}
+//}
 
     public List search(String parameter) {
         // TODO For search purpose

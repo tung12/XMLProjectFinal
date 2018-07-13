@@ -90,14 +90,12 @@ public class CategoryServlet extends HttpServlet {
         try {
             jaxbContext = JAXBContext.newInstance(ListCategory.class);
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-            jaxbMarshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
-            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            jaxbMarshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");           
             jaxbMarshaller.marshal(listCategory, stringWriterCategory);
         } catch (JAXBException ex) {
             Logger.getLogger(ProductServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.setAttribute("categoryXml", stringWriterCategory.toString());
-        System.out.println(stringWriterCategory.toString());
+        request.setAttribute("categoryXml", stringWriterCategory.toString());      
         RequestDispatcher dispatcher
                 = this.getServletContext().getRequestDispatcher("/WEB-INF/admin/category.jsp");
 
@@ -116,26 +114,7 @@ public class CategoryServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("id");
-        ListCategory listCategory = new ListCategory();
-        if (id!=null) {
-             listCategory.getCategory().add(categoryDao.getCategoryById(BigInteger.valueOf(Long.parseLong(id))));
-        }
-        else{
-            listCategory.getCategory().addAll(categoryDao.getAllCategory());
-        }
         
-        JAXBContext jaxbContext;
-        try {
-            jaxbContext = JAXBContext.newInstance(ListCategory.class);
-            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-            jaxbMarshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
-            //jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            //jaxbMarshaller.setProperty(Marshaller., "");
-            jaxbMarshaller.marshal(listCategory, response.getOutputStream());
-        } catch (JAXBException ex) {
-            Logger.getLogger(ProductServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     /**

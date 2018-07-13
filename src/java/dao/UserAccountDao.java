@@ -5,28 +5,39 @@
  */
 package dao;
 
+import java.math.BigInteger;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import jaxb.category.CategoryItem;
+import jaxb.product.ProductItem;
 import jaxb.user.UserItem;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import utils.Connections;
+import utils.PaginationHandler;
 
 /**
  *
  * @author ntien
  */
-public class UserAccountDao {
+public class UserAccountDao extends BaseDao<UserItem, BigInteger> {
 
     private static final String ATT_NAME_USER_NAME_COOKIE = "USER_NAME_IN_COOKIE";
     SessionFactory factory = Connections.getSessionFactory();
     Session session = factory.getCurrentSession();
+    protected Class entityClass;
+
+    public UserAccountDao() {
+        this.entityClass = UserItem.class;
+        setTClass(entityClass);
+    }
 
     public void storeLoginedUser(HttpSession session, UserItem loginedUser) {
         session.setAttribute("loginedUser", loginedUser);
@@ -77,7 +88,7 @@ public class UserAccountDao {
         return null;
     }
 
-    public  UserItem findUser(String userName, String password) {
+    public UserItem findUser(String userName, String password) {
         try {
             session = session.getSessionFactory().openSession();
             session.getTransaction().begin();
@@ -92,5 +103,17 @@ public class UserAccountDao {
             session.getTransaction().rollback();
         }
         return null;
+    }
+
+    public PaginationHandler<UserItem> getAllUser(Integer page, Integer maxResult, Integer maxNavigationResult) {
+        String sql = "From " + UserItem.class.getName();
+        return getPaginationResult(sql, page, maxResult, maxNavigationResult);
+    }
+    public List<UserItem> getAllUser(){
+        return getList();
+    }
+
+    public UserItem getUserById(BigInteger id) {
+        return getByID(id);
     }
 }

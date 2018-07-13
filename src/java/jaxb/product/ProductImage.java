@@ -15,8 +15,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
@@ -24,14 +29,27 @@ import javax.xml.bind.annotation.XmlSchemaType;
  */
 @Entity
 @Table(name = "image")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "productImage", propOrder = {
+    "url",
+    "lastModifiedDate",
+    "lastModifiedBy",
+    "createdDate",
+    "createdBy",
+    "isDeleted"
+    
+})
 public class ProductImage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @XmlAttribute(name = "id")
+    @XmlSchemaType(name = "positiveInteger")
     protected Long id;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "productId",nullable = false,insertable=true, updatable=false)
+    @XmlTransient
     protected ProductItem product;
     @Column(name = "url")
     protected String url;

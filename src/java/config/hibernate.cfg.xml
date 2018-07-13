@@ -33,6 +33,7 @@
         <mapping class="jaxb.user.UserItem" />
         <mapping class="jaxb.user.RoleItem" />
         <mapping class="jaxb.news.NewsItem" />
+        <mapping class="jaxb.newsimage.NewsImage" />
     </session-factory>
  
 </hibernate-configuration>
